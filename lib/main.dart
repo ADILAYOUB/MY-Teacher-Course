@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myteacher/app_bloc.dart';
 import 'package:myteacher/app_event.dart';
+import 'package:myteacher/pages/welcome/bloc/welcone_blocs.dart';
+import 'package:myteacher/pages/welcome/welcome.dart';
 
-import 'constants/strings_app.dart';
+import 'app_state.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,33 +18,45 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => AppBloc(),
-        child: MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => WelcomeBloc(),
           ),
-          home: MyHomePage(title: appName),
+          BlocProvider(
+            create: (context) => AppBloc(),
+          )
+        ],
+        child: ScreenUtilInit(
+          builder: (context, child) => MaterialApp(
+            title: 'L-Techer',
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              useMaterial3: true,
+            ),
+            debugShowCheckedModeBanner: false,
+            home: const Welcome(),
+            routes: {
+              '/home': (context) => const MyHomePage(),
+            },
+          ),
         ));
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(title),
+          title: const Text('Techer Video Course'),
         ),
-        body: BlocBuilder(builder: (context, state) {
-          return Center(
-            child: Column(
+        body: Center(
+          child: BlocBuilder<AppBloc, AppState>(builder: (context, state) {
+            return Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 const Text(
@@ -52,9 +67,9 @@ class MyHomePage extends StatelessWidget {
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ],
-            ),
-          );
-        }),
+            );
+          }),
+        ),
         floatingActionButton: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -75,6 +90,7 @@ class MyHomePage extends StatelessWidget {
   Widget _buildFloatingActionButton(
       IconData icon, String tooltip, VoidCallback onPressed) {
     return FloatingActionButton(
+      heroTag: tooltip,
       onPressed: onPressed,
       tooltip: tooltip,
       child: Icon(icon),
