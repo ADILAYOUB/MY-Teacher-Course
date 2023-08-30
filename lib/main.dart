@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myteacher/app_bloc.dart';
+import 'package:myteacher/app_event.dart';
 
 import 'constants/strings_app.dart';
 
@@ -12,72 +15,59 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: MyHomePage(title: appName),
-    );
+    return BlocProvider(
+        create: (context) => AppBloc(),
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          home: MyHomePage(title: appName),
+        ));
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  } // persistant
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text(widget.title),
+          title: Text(title),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ],
-          ),
-        ),
+        body: BlocBuilder(builder: (context, state) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'You have pushed the button this many times:',
+                ),
+                Text(
+                  '${BlocProvider.of<AppBloc>(context).state.counter}',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+              ],
+            ),
+          );
+        }),
         floatingActionButton: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             _buildFloatingActionButton(
-                Icons.add, 'Increment', _incrementCounter),
+                Icons.add,
+                'Increment',
+                () =>
+                    BlocProvider.of<AppBloc>(context).add(IncrementCounter())),
             _buildFloatingActionButton(
-                Icons.remove, 'Decrement', _decrementCounter),
-            _buildFloatingActionButton(
-                Icons.remove, 'Decrement', _decrementCounter),
-            _buildFloatingActionButton(
-                Icons.remove, 'Decrement', _decrementCounter),
+                Icons.remove,
+                'Decrement',
+                () =>
+                    BlocProvider.of<AppBloc>(context).add(DecrementCounter())),
           ],
         ));
   }
