@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myteacher/app_bloc.dart';
 import 'package:myteacher/app_event.dart';
+import 'package:myteacher/pages/sign_in/sign_in.dart';
 import 'package:myteacher/pages/welcome/bloc/welcone_blocs.dart';
 import 'package:myteacher/pages/welcome/welcome.dart';
 
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
             home: const Welcome(),
             routes: {
               '/home': (context) => const MyHomePage(),
+              '/signin': (context) => const SignIn(),
             },
           ),
         ));

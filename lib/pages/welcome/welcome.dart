@@ -131,7 +131,7 @@ class _WelcomeState extends State<Welcome> {
               //   MaterialPageRoute(builder: (context) => const MyHomePage()),
               // );
               Navigator.of(context)
-                  .pushNamedAndRemoveUntil('/home', (route) => false);
+                  .pushNamedAndRemoveUntil('/signin', (route) => false);
             }
           },
           child: Container(
