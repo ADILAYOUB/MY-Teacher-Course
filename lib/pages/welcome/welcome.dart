@@ -2,6 +2,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myteacher/common/values/colors.dart';
 import 'package:myteacher/pages/welcome/bloc/welcome_states.dart';
 import 'package:myteacher/pages/welcome/bloc/welcone_blocs.dart';
 
@@ -69,9 +70,9 @@ class _WelcomeState extends State<Welcome> {
                         position: state.index,
                         dotsCount: 3,
                         decorator: DotsDecorator(
-                            activeColor: Colors.deepPurple,
+                            activeColor: AppColors.primaryThreeElementText,
                             activeSize: const Size(18.0, 8.0),
-                            color: Colors.grey.withOpacity(0.5),
+                            color: AppColors.primaryElement,
                             size: const Size.square(10.0),
                             activeShape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5.0),
@@ -104,7 +105,7 @@ class _WelcomeState extends State<Welcome> {
           title,
           style: TextStyle(
               fontSize: 30.sp,
-              color: Colors.black,
+              color: AppColors.primaryText,
               fontWeight: FontWeight.normal),
         ),
         Container(
@@ -113,7 +114,7 @@ class _WelcomeState extends State<Welcome> {
             subtitle,
             style: TextStyle(
                 fontSize: 16.sp,
-                color: Colors.black.withOpacity(0.5),
+                color: AppColors.primarySecondaryElementText,
                 fontWeight: FontWeight.normal),
           ),
         ),
@@ -126,10 +127,6 @@ class _WelcomeState extends State<Welcome> {
                 curve: Curves.ease,
               );
             } else {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => const MyHomePage()),
-              // );
               Navigator.of(context)
                   .pushNamedAndRemoveUntil('/signin', (route) => false);
             }
@@ -139,14 +136,14 @@ class _WelcomeState extends State<Welcome> {
             width: 325.w,
             height: 50.h,
             decoration: BoxDecoration(
-                color: Colors.deepPurple,
+                color: AppColors.primaryElement,
                 borderRadius: BorderRadius.all(Radius.circular(16.w)),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
+                    color: AppColors.primarySecondaryElementText,
                     spreadRadius: 2,
                     blurRadius: 7,
-                    offset: const Offset(0, 3),
+                    offset: Offset(0, 3),
                   ),
                 ]),
             child: Center(
