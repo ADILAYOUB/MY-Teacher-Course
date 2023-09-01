@@ -27,7 +27,7 @@ class _SignInState extends State<SignIn> {
               Center(child: reusableTect('or use your email account to login')),
               Container(
                 margin: EdgeInsets.only(
-                  top: 64.h,
+                  top: 36.h,
                 ),
                 padding: EdgeInsets.only(
                   left: 24.w,
