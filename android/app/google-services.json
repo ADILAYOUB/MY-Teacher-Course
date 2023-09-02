@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "775073450454",
+    "project_id": "myteacherapplicatonadilayoub",
+    "storage_bucket": "myteacherapplicatonadilayoub.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775073450454:android:97b7dcda6d27090e9bbc77",
+        "android_client_info": {
+          "package_name": "com.adilayoub.myteacher"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775073450454-ppd77t6alknqe4mc99al3640qlpaqole.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4kuR_TpsOl3x77SEkOb7i4gmhXH6KQ3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775073450454-ppd77t6alknqe4mc99al3640qlpaqole.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

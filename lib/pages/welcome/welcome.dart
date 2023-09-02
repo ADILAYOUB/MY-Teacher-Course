@@ -70,9 +70,9 @@ class _WelcomeState extends State<Welcome> {
                         position: state.index,
                         dotsCount: 3,
                         decorator: DotsDecorator(
-                            activeColor: AppColors.primaryThreeElementText,
+                            activeColor: AppColors.primaryElement,
                             activeSize: const Size(18.0, 8.0),
-                            color: AppColors.primaryElement,
+                            color: AppColors.primaryThreeElementText,
                             size: const Size.square(10.0),
                             activeShape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5.0),
