@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         ],
         child: ScreenUtilInit(
           builder: (context, child) => MaterialApp(
-            title: 'L-Techer',
+            title: 'L-Teacher',
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
               useMaterial3: true,

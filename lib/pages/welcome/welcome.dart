@@ -134,7 +134,7 @@ class _WelcomeState extends State<Welcome> {
           child: Container(
             margin: EdgeInsets.only(top: 100.h, left: 24.w, right: 24.w),
             width: 325.w,
-            height: 50.h,
+            height: 44.h,
             decoration: BoxDecoration(
                 color: AppColors.primaryElement,
                 borderRadius: BorderRadius.all(Radius.circular(16.w)),
@@ -150,7 +150,7 @@ class _WelcomeState extends State<Welcome> {
               child: Text(
                 buttonName,
                 style: TextStyle(
-                    fontSize: 30.sp,
+                    fontSize: 20.sp,
                     color: Colors.white,
                     fontWeight: FontWeight.normal),
               ),
