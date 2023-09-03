@@ -17,9 +17,14 @@ class SignInController {
         String emailAddress = state.email;
         String password = state.password;
 
-        if (emailAddress.isEmpty) {}
+        if (emailAddress.isEmpty) {
+          print('Email is empty');
+        } else {
+          print(' $emailAddress This is email');
+        }
         if (password.isEmpty) {}
         // check if user exists in firebase or not
+        print(' password is empty');
         try {
           final credential =
               await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -28,9 +33,12 @@ class SignInController {
           );
           if (credential.user == null) {
             //
+            print('user doesn\'t exists');
           }
           // user exists but didn't verify email
-          if (!credential.user!.emailVerified) {}
+          if (!credential.user!.emailVerified) {
+            print('user not verified ');
+          }
           var user = credential.user;
           if (user != null) {
             // we got the verified user from firebase
