@@ -61,7 +61,8 @@ Widget reusableTect(String text) {
       ));
 }
 
-Widget buildTextField(String hintText, String type, String iconName) {
+Widget buildTextField(
+    String hintText, String type, String iconName, void Function(String)? fun) {
   return Container(
     width: 325.w,
     height: 50.h,
@@ -85,6 +86,7 @@ Widget buildTextField(String hintText, String type, String iconName) {
           width: 270.w,
           height: 50.h,
           child: TextField(
+            onChanged: (value) => fun!(value),
             keyboardType: TextInputType.multiline,
             decoration: InputDecoration(
               border: const OutlineInputBorder(
