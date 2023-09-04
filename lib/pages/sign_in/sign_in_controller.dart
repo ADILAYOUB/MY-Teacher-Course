@@ -1,31 +1,28 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myteacher/common/widgets/flutter_toast.dart';
 import 'package:myteacher/pages/sign_in/bloc/sign_in_bloc.dart';
 
 class SignInController {
   final BuildContext context;
   const SignInController({required this.context});
-
   //handle signin based on socail or email
   Future<void> handleSignIn(String type) async {
     try {
       if (type == 'email') {
         //BlocProvider.of<SignInBloc>(context).state;
         final state = context.read<SignInBloc>().state;
-
         // as we access the state we can access the properties inside it
         String emailAddress = state.email;
         String password = state.password;
 
         if (emailAddress.isEmpty) {
-          print('=== Email is empty');
-        } else {
-          print(' $emailAddress This is email');
+          toastInfo(message: 'Please enter email');
         }
-        if (password.isEmpty) {}
-        // check if user exists in firebase or not
-        print('=== password is empty');
+        if (password.isEmpty) {
+          toastInfo(message: 'Please enter password');
+        }
         try {
           final credential =
               await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -33,28 +30,26 @@ class SignInController {
             password: password,
           );
           if (credential.user == null) {
-            //
-            print('=== user doesn\'t exists');
+            toastInfo(message: 'User not found');
           }
           // user exists but didn't verify email
           if (!credential.user!.emailVerified) {
-            print('===  user not verified ');
+            toastInfo(message: 'Please verify your email');
           }
           var user = credential.user;
           if (user != null) {
             // we got the verified user from firebase
             print('===  user exits ');
           } else {
-            //error geting user from firebase
-            print('===  no user');
+            toastInfo(message: 'Currently you are not user of this app');
           }
         } on FirebaseAuthException catch (e) {
           if (e.code == 'user-not-found') {
-            print('===  no user fount form the email');
+            toastInfo(message: 'No user found for that email');
           } else if (e.code == 'wrong-password') {
-            print('===  wrong password provided form the user');
+            toastInfo(message: 'Wrong password entered');
           } else if (e.code == 'invalid-email') {
-            print('===  Invalid Email');
+            toastInfo(message: 'Invalid email');
           }
         }
       }
