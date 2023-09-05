@@ -6,7 +6,7 @@ import 'package:myteacher/pages/sign_in/bloc/sign_in_event.dart';
 import 'package:myteacher/pages/sign_in/bloc/sign_in_states.dart';
 import 'package:myteacher/pages/sign_in/sign_in_controller.dart';
 
-import 'widgets/sign_in_widget.dart';
+import '../common_widgets.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -24,7 +24,7 @@ class _SignInState extends State<SignIn> {
         child: SafeArea(
           child: Scaffold(
             backgroundColor: Colors.white,
-            appBar: buildAppBar(),
+            appBar: buildAppBar('Log In'),
             body: SingleChildScrollView(
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +61,9 @@ class _SignInState extends State<SignIn> {
                 buildLoginandRegButton('Log In', 'login', () {
                   SignInController(context: context).handleSignIn('email');
                 }),
-                buildLoginandRegButton('Register', 'register', () {}),
+                buildLoginandRegButton('Sign Up', 'register', () {
+                  Navigator.of(context).pushNamed('register');
+                }),
               ],
             )),
           ),

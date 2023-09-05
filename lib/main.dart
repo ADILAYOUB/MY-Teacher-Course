@@ -7,6 +7,7 @@ import 'package:myteacher/pages/welcome/welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'firebase_options.dart';
+import 'pages/register/register.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
             home: const Welcome(),
             routes: {
               '/signin': (context) => const SignIn(),
+              'register': (context) => const Register(),
             },
           ),
         ));
