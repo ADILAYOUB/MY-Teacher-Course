@@ -38,8 +38,7 @@ class SignInController {
           }
           var user = credential.user;
           if (user != null) {
-            // we got the verified user from firebase
-            print('===  user exits ');
+            Navigator.of(context).pushNamed('home');
           } else {
             toastInfo(message: 'Currently you are not user of this app');
           }
