@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myteacher/common/values/colors.dart';
 import 'package:myteacher/pages/bloc_providers.dart';
 import 'package:myteacher/pages/sign_in/sign_in.dart';
 import 'package:myteacher/pages/welcome/welcome.dart';
@@ -27,7 +28,10 @@ class MyApp extends StatelessWidget {
           builder: (context, child) => MaterialApp(
             title: 'L-Teacher',
             theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              appBarTheme: const AppBarTheme(
+                  iconTheme: IconThemeData(
+                color: AppColors.primaryText,
+              )),
               useMaterial3: true,
             ),
             debugShowCheckedModeBanner: false,
