@@ -68,15 +68,13 @@ class AppPages {
       // check for route name matching when navigator gets trigger
       var result = routes().where((element) => element.route == settings.name);
       if (result.isNotEmpty) {
-        print('valid route name ${settings.name}');
         return MaterialPageRoute(
           builder: (_) => result.first.page,
           settings: settings,
         );
       }
     }
-    print('invalid route name  ${settings.name}');
-
+    // 404 Page not found
     return MaterialPageRoute(
       builder: (_) => const SignIn(),
       settings: settings,
