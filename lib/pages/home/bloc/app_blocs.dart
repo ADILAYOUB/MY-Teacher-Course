@@ -5,5 +5,9 @@ import 'app_states.dart';
 
 class AppBlocs extends Bloc<AppEvent, AppState> {
   // AppBlocs(super.initialState);
-  AppBlocs() : super(const AppState());
+  AppBlocs() : super(const AppState()) {
+    on<TiggerEventApp>((event, emit) {
+      emit(AppState(index: event.index));
+    });
+  }
 }
