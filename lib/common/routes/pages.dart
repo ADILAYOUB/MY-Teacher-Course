@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myteacher/common/routes/names.dart';
+import 'package:myteacher/global.dart';
 import 'package:myteacher/pages/home/bloc/app_blocs.dart';
 import 'package:myteacher/pages/home/home_page.dart';
 import 'package:myteacher/pages/register/bloc/register_bloc.dart';
@@ -66,9 +67,27 @@ class AppPages {
     // }
 
     if (settings.name != null) {
-      // check for route name matching when navigator gets trigger
+      //check for route name macthing when navigator gets triggered.
       var result = routes().where((element) => element.route == settings.name);
       if (result.isNotEmpty) {
+        print('**********************');
+        bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
+        print(
+            "************************ ${result.first.route == AppRoutes.INITIAL && deviceFirstOpen}");
+        if (result.first.route == AppRoutes.INITIAL && deviceFirstOpen) {
+          bool isLoggedin = Global.storageService.getIsLoggedIn();
+          if (isLoggedin) {
+            return MaterialPageRoute(
+              builder: (_) => const HomePage(),
+              settings: settings,
+            );
+          }
+
+          return MaterialPageRoute(
+            builder: (_) => const SignIn(),
+            settings: settings,
+          );
+        }
         return MaterialPageRoute(
           builder: (_) => result.first.page,
           settings: settings,
@@ -77,8 +96,6 @@ class AppPages {
     }
     // 404 Page not found
     return MaterialPageRoute(
-      builder: (_) => const SignIn(),
-      settings: settings,
-    );
+        builder: (_) => const SignIn(), settings: settings);
   }
 }

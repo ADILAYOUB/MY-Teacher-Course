@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myteacher/common/routes/routes.dart';
 import 'package:myteacher/global.dart';
-import 'package:myteacher/pages/welcome/welcome.dart';
 
 Future<void> main() async {
   await Global.init();
@@ -29,7 +28,6 @@ class MyApp extends StatelessWidget {
               useMaterial3: true,
             ),
             debugShowCheckedModeBanner: false,
-            home: const Welcome(),
             onGenerateRoute: AppPages.generateRouteSettings,
           ),
         ));

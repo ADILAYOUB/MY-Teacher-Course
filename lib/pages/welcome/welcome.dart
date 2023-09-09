@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myteacher/common/values/colors.dart';
+import 'package:myteacher/common/values/constants.dart';
+import 'package:myteacher/global.dart';
 import 'package:myteacher/pages/welcome/bloc/welcome_states.dart';
 import 'package:myteacher/pages/welcome/bloc/welcone_blocs.dart';
 
@@ -127,8 +129,11 @@ class _WelcomeState extends State<Welcome> {
                 curve: Curves.ease,
               );
             } else {
+              Global.storageService
+                  .setBool(AppConstants.STORAGE_DEVICE_FIRST_TIME, true);
+
               Navigator.of(context)
-                  .pushNamedAndRemoveUntil('/sign_In', (route) => false);
+                  .pushNamedAndRemoveUntil("/sign_in", (route) => false);
             }
           },
           child: Container(
