@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myteacher/common/values/colors.dart';
-import 'package:myteacher/pages/home/widgets/home_widgets.dart';
-
-import 'bloc/app_blocs.dart';
-import 'bloc/app_events.dart';
-import 'bloc/app_states.dart';
+import 'package:myteacher/pages/home/widgets/home_page_widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,44 +13,30 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppBlocs, AppState>(builder: (context, state) {
-      return Container(
-        color: Colors.white,
-        child: SafeArea(
-            child: Scaffold(
-          body: buildPagesFromNav(state.index),
-          bottomNavigationBar: Container(
-            width: 375.w,
-            height: 52.h,
-            decoration: BoxDecoration(
-              color: AppColors.primaryElement,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20.h),
-                topRight: Radius.circular(20.h),
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
-                  spreadRadius: 1,
-                  blurRadius: 1,
-                ),
-              ],
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: buildAppBar(),
+      body: Container(
+        margin: EdgeInsets.symmetric(
+          vertical: 0,
+          horizontal: 24.w,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            homePageText(
+              'Assalamu Alaikum',
+              color: AppColors.primaryThreeElementText,
             ),
-            child: BottomNavigationBar(
-                currentIndex: state.index,
-                elevation: 0,
-                type: BottomNavigationBarType.fixed,
-                showSelectedLabels: false,
-                showUnselectedLabels: false,
-                selectedItemColor: AppColors.primaryElement,
-                unselectedItemColor: AppColors.primaryFourElementText,
-                onTap: (value) {
-                  context.read<AppBlocs>().add(TiggerEventApp(value));
-                },
-                items: bottomTabs),
-          ),
-        )),
-      );
-    });
+            homePageText(
+              'Adil Ayoub',
+              top: 5,
+            ),
+            SizedBox(height: 20.h),
+            searchView(),
+          ],
+        ),
+      ),
+    );
   }
 }

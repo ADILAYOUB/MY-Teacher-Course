@@ -16,20 +16,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [...AppPages.allBlocProviders(context)],
-        child: ScreenUtilInit(
-          builder: (context, child) => MaterialApp(
-            title: 'L-Teacher',
-            theme: ThemeData(
-              appBarTheme: const AppBarTheme(
-                elevation: 0,
-                backgroundColor: Colors.white,
-              ),
-              useMaterial3: true,
+      providers: [...AppPages.allBlocProviders(context)],
+      child: ScreenUtilInit(
+        designSize: const Size(375, 812),
+        builder: (context, child) => MaterialApp(
+          title: 'L-Teacher',
+          theme: ThemeData(
+            appBarTheme: const AppBarTheme(
+              elevation: 0,
+              backgroundColor: Colors.white,
             ),
-            debugShowCheckedModeBanner: false,
-            onGenerateRoute: AppPages.generateRouteSettings,
+            useMaterial3: true,
           ),
-        ));
+          debugShowCheckedModeBanner: false,
+          onGenerateRoute: AppPages.generateRouteSettings,
+        ),
+      ),
+    );
   }
 }

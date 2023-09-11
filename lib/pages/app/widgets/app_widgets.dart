@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myteacher/common/values/colors.dart';
+import 'package:myteacher/pages/home/home_page.dart';
 
 Widget buildPagesFromNav(int index) {
   List<Widget> pages = [
-    const Center(child: Text('Home')),
+    const HomePage(),
     const Center(child: Text('Search')),
     const Center(child: Text('Course')),
     const Center(child: Text('Chat')),

@@ -37,7 +37,7 @@ class _RegisterState extends State<Register> {
                         reusableTect('Enter your details & sign up for free')),
                 Container(
                   margin: EdgeInsets.only(
-                    top: 36.h,
+                    top: 60.h,
                   ),
                   padding: EdgeInsets.only(
                     left: 24.w,
@@ -74,7 +74,7 @@ class _RegisterState extends State<Register> {
                 Container(
                   margin: EdgeInsets.only(left: 25.w),
                   child: reusableTect(
-                      'By creating a account you agree to our terms & conditions'),
+                      'By creating an account you have to agree with our terms & conditions'),
                 ),
                 buildLoginandRegButton('Sign Up', 'login', () {
                   RegisterController(context: context).handleSignIn();

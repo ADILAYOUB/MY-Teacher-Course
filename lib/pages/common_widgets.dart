@@ -25,7 +25,7 @@ AppBar buildAppBar(String title) {
 Widget signInOptions(BuildContext context) {
   return Container(
     margin: EdgeInsets.only(top: 40.h, bottom: 20.h),
-    padding: EdgeInsets.only(left: 24.w, right: 24.w),
+    padding: EdgeInsets.only(left: 50.w, right: 50.w),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:myteacher/common/routes/names.dart';
 import 'package:myteacher/global.dart';
-import 'package:myteacher/pages/home/bloc/app_blocs.dart';
-import 'package:myteacher/pages/home/home_page.dart';
+import 'package:myteacher/pages/app/app_page.dart';
+import 'package:myteacher/pages/app/bloc/app_blocs.dart';
 import 'package:myteacher/pages/register/bloc/register_bloc.dart';
 import 'package:myteacher/pages/register/register.dart';
 import 'package:myteacher/pages/sign_in/bloc/sign_in_bloc.dart';
@@ -43,7 +43,7 @@ class AppPages {
       ),
       PageEntity(
         route: AppRoutes.HOME,
-        page: const HomePage(),
+        page: const AppPage(),
         bloc: BlocProvider(create: (_) => AppBlocs()),
       ),
     ];
@@ -75,7 +75,7 @@ class AppPages {
           bool isLoggedin = Global.storageService.getIsLoggedIn();
           if (isLoggedin) {
             return MaterialPageRoute(
-              builder: (_) => const HomePage(),
+              builder: (_) => const AppPage(),
               settings: settings,
             );
           }
