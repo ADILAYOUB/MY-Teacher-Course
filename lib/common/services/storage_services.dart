@@ -21,11 +21,15 @@ class StorageService {
   // the value => it will be in the welcome.dart file
   // on getstared when navigate to the home screen
 
+  // we need to set up
+  Future<bool> setString(String key, String value) async {
+    return await _prefs.setString(key, value);
+  }
+
   // how to read the value is true when login in first time
   // as we pass true when login in first time
   // we will create a method to know the value after setting it and then will be
   // able to use it
-
   bool getDeviceFirstOpen() {
     return _prefs.getBool(AppConstants.STORAGE_DEVICE_FIRST_TIME) ?? false;
   }

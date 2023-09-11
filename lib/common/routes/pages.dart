@@ -70,10 +70,7 @@ class AppPages {
       //check for route name macthing when navigator gets triggered.
       var result = routes().where((element) => element.route == settings.name);
       if (result.isNotEmpty) {
-        print('**********************');
         bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
-        print(
-            "************************ ${result.first.route == AppRoutes.INITIAL && deviceFirstOpen}");
         if (result.first.route == AppRoutes.INITIAL && deviceFirstOpen) {
           bool isLoggedin = Global.storageService.getIsLoggedIn();
           if (isLoggedin) {

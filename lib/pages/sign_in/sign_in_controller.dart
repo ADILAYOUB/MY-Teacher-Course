@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:myteacher/common/values/constants.dart';
 import 'package:myteacher/common/widgets/flutter_toast.dart';
+import 'package:myteacher/global.dart';
 import 'package:myteacher/pages/sign_in/bloc/sign_in_bloc.dart';
 
 class SignInController {
@@ -38,6 +40,8 @@ class SignInController {
           }
           var user = credential.user;
           if (user != null) {
+            Global.storageService
+                .setString(AppConstants.STORAGE_USER_TOKEN_KEY, "1234567");
             Navigator.of(context).pushNamed('/home');
           } else {
             toastInfo(message: 'Currently you are not user of this app');
