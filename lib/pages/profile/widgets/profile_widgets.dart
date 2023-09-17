@@ -62,12 +62,33 @@ Widget listProfileDetail() {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Name',
-          style: TextStyle(
-              color: AppColors.primaryText,
-              fontSize: 12.sp,
-              fontWeight: FontWeight.normal),
+        GestureDetector(
+          child: Container(
+            margin: EdgeInsets.only(left: 24.w),
+            child: Row(
+              children: [
+                Container(
+                    width: 40.w,
+                    height: 40.h,
+                    padding: const EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.w),
+                      color: AppColors.primaryElement,
+                    ),
+                    child: Image.asset('assets/icons/settings.png')),
+                SizedBox(
+                  width: 16.w,
+                ),
+                Text(
+                  'Settings',
+                  style: TextStyle(
+                      color: AppColors.primaryText,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     ),
