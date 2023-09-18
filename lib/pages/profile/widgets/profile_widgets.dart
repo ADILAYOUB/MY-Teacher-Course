@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:myteacher/common/routes/names.dart';
 import 'package:myteacher/common/values/colors.dart';
 
 AppBar profileAppBar() {
@@ -65,7 +66,7 @@ var imageInfo = <String, String>{
 };
 
 // list of profile details
-Widget listProfileDetail() {
+Widget listProfileDetail(BuildContext context) {
   return Container(
     margin: EdgeInsets.only(top: 20.h),
     child: Column(
@@ -74,6 +75,7 @@ Widget listProfileDetail() {
         ...List.generate(
           imageInfo.length,
           (index) => GestureDetector(
+            onTap: () => Navigator.of(context).pushNamed(AppRoutes.SETTINGS),
             child: Container(
               margin: EdgeInsets.only(left: 24.w, bottom: 16.h),
               child: Row(

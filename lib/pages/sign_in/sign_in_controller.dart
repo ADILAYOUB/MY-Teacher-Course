@@ -37,6 +37,7 @@ class SignInController {
           // user exists but didn't verify email
           if (!credential.user!.emailVerified) {
             toastInfo(message: 'Please verify your email');
+            return;
           }
           var user = credential.user;
           if (user != null) {
@@ -56,6 +57,8 @@ class SignInController {
           }
         }
       }
-    } catch (e) {}
+    } catch (e) {
+      // print(e.toString());
+    }
   }
 }
