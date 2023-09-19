@@ -36,6 +36,7 @@ class AppPages {
       PageEntity(
         name: AppRoutes.HOME,
         page: const HomePage(),
+        bloc: BlocProvider(create: (_) => WelcomeBloc()),
       ),
     ];
   }

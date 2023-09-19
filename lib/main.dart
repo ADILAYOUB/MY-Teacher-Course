@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:myteacher/pages/bloc_providers.dart';
+import 'package:myteacher/common/routes/pages.dart';
 import 'package:myteacher/pages/home/home_page.dart';
-import 'package:myteacher/pages/sign_in/sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:myteacher/pages/register/register.dart';
+import 'package:myteacher/pages/sign_in/sign_in.dart';
+import 'package:myteacher/pages/welcome/welcome.dart';
 
 import 'firebase_options.dart';
-import 'pages/register/register.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: AppBlocProviders.allbocProvider,
+        providers: [...AppPages.allBlocProviders(context)],
         child: ScreenUtilInit(
           builder: (context, child) => MaterialApp(
             title: 'L-Teacher',
@@ -34,12 +35,12 @@ class MyApp extends StatelessWidget {
               useMaterial3: true,
             ),
             debugShowCheckedModeBanner: false,
-            home: const HomePage(),
-            routes: {
-              '/signin': (context) => const SignIn(),
-              'register': (context) => const Register(),
-              'home': (context) => const HomePage(),
-            },
+            home: const Welcome(),
+            // routes: {
+            //   '/signin': (context) => const SignIn(),
+            //   'register': (context) => const Register(),
+            //   'home': (context) => const HomePage(),
+            // },
           ),
         ));
   }
