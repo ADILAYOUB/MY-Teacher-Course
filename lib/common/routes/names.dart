@@ -4,7 +4,7 @@ class AppRoutes {
   // home page
   static const String HOME = '/home';
   // sign in screen
-  static const String SIGNIN = '/sign_in';
+  static const String SIGNIN = '/sign_In';
   // registration screen
   static const String REGISTER = '/register';
 }
