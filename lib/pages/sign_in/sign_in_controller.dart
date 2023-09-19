@@ -38,7 +38,7 @@ class SignInController {
           }
           var user = credential.user;
           if (user != null) {
-            Navigator.of(context).pushNamed('home');
+            Navigator.of(context).pushNamed('/home');
           } else {
             toastInfo(message: 'Currently you are not user of this app');
           }
