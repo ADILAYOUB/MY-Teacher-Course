@@ -27,21 +27,57 @@ class _HomePageState extends State<HomePage> {
               vertical: 0,
               horizontal: 24.w,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                homePageText(
-                  'Assalamu Alaikum',
-                  color: AppColors.primaryThreeElementText,
+            child: CustomScrollView(
+              //  crossAxisAlignment: CrossAxisAlignment.start,
+              slivers: [
+                SliverToBoxAdapter(
+                  child: homePageText(
+                    'Assalamu Alaikum',
+                    color: AppColors.primaryThreeElementText,
+                  ),
                 ),
-                homePageText(
-                  'Adil Ayoub',
-                  top: 5,
+                SliverToBoxAdapter(
+                  child: homePageText(
+                    'Adil Ayoub',
+                    top: 5,
+                  ),
                 ),
-                SizedBox(height: 20.h),
-                searchView(),
-                sliderView(context, state),
-                menuView(),
+                SliverPadding(padding: EdgeInsets.only(top: 20.h)),
+                SliverToBoxAdapter(child: searchView()),
+                SliverToBoxAdapter(child: sliderView(context, state)),
+                SliverToBoxAdapter(child: menuView()),
+                SliverPadding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 28.h,
+                    horizontal: 0.w,
+                  ),
+                  sliver: SliverGrid(
+                    delegate: SliverChildBuilderDelegate(
+                      childCount: 4,
+                      (BuildContext context, int index) {
+                        return GestureDetector(
+                          onTap: () {},
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(
+                                  'assets/icons/image(4).png',
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 16,
+                      crossAxisSpacing: 16,
+                      childAspectRatio: 1.6,
+                    ),
+                  ),
+                ),
               ],
             ),
           );
