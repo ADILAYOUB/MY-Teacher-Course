@@ -208,7 +208,7 @@ Widget _sliderContainer({String imagePath = "assets/icons/art.png"}) {
 
 // Menu View for items
 Widget menuView() {
-  return Column(children: [
+  return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
     Container(
       width: 325.w,
       margin: EdgeInsets.only(top: 12.h),
@@ -216,10 +216,10 @@ Widget menuView() {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          _reusableMenuText('Choose your Coursees'),
+          _reusableText('Choose your Coursees'),
           GestureDetector(
             onTap: () {},
-            child: _reusableMenuText(
+            child: _reusableText(
               'See All',
               color: AppColors.primarySecondaryElementText,
               fontSize: 12,
@@ -228,31 +228,26 @@ Widget menuView() {
         ],
       ),
     ),
-    Container(
-      child: Row(
-        children: [
-          Container(
-            margin: EdgeInsets.only(top: 20.w),
-            decoration: BoxDecoration(
-                color: AppColors.primaryElement,
-                borderRadius: BorderRadius.circular(8.w),
-                border: Border.all(color: AppColors.primaryElement)),
-            padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 16.w),
-            child: _reusableMenuText(
-              'All',
-              color: AppColors.primaryElementText,
-              fontSize: 12,
-              fontWeight: FontWeight.normal,
-            ),
-          )
-        ],
-      ),
+    Row(
+      children: [
+        _reusabeMenuText('All'),
+        _reusabeMenuText(
+          'Popular',
+          textColor: AppColors.primaryThreeElementText,
+          backgroundColor: Colors.white,
+        ),
+        _reusabeMenuText(
+          'Newest',
+          textColor: AppColors.primaryThreeElementText,
+          backgroundColor: Colors.white,
+        ),
+      ],
     )
   ]);
 }
 
-// reusable menu text
-Widget _reusableMenuText(
+// reusable  text in home Scree
+Widget _reusableText(
   String text, {
   Color color = AppColors.primaryText,
   int fontSize = 16,
@@ -265,5 +260,28 @@ Widget _reusableMenuText(
           color: color,
           fontSize: fontSize.sp,
         )),
+  );
+}
+
+// Reusabe text for the menu
+
+Widget _reusabeMenuText(
+  String text, {
+  Color textColor = AppColors.primaryElementText,
+  Color backgroundColor = AppColors.primaryElement,
+}) {
+  return Container(
+    margin: EdgeInsets.only(right: 20.w),
+    decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(8.w),
+        border: Border.all(color: backgroundColor)),
+    padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 16.w),
+    child: _reusableText(
+      text,
+      color: textColor,
+      fontSize: 12,
+      fontWeight: FontWeight.normal,
+    ),
   );
 }
