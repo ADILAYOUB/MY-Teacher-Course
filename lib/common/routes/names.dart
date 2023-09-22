@@ -2,7 +2,7 @@ class AppRoutes {
   // welcome or on boarding screen
   static const String INITIAL = '/';
   // home page
-  static const String HOME = '/home';
+  static const String APP = '/app';
   // sign in screen
   static const String SIGNIN = '/sign_In';
   // registration screen
