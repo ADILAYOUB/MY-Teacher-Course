@@ -56,17 +56,7 @@ class _HomePageState extends State<HomePage> {
                       childCount: 4,
                       (BuildContext context, int index) {
                         return GestureDetector(
-                          onTap: () {},
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(
-                                  'assets/icons/image(4).png',
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
+                            onTap: () {}, child: courseGrid());
                       },
                     ),
                     gridDelegate:

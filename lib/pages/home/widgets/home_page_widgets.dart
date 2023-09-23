@@ -158,8 +158,7 @@ Widget sliderView(BuildContext context, HomePageStates state) {
           ],
         ),
       ),
-      Container(
-          child: DotsIndicator(
+      DotsIndicator(
         dotsCount: 5,
         position: state.index,
         decorator: DotsDecorator(
@@ -171,7 +170,7 @@ Widget sliderView(BuildContext context, HomePageStates state) {
             borderRadius: BorderRadius.circular(4.0),
           ),
         ),
-      ))
+      )
     ],
   );
 }
@@ -253,14 +252,12 @@ Widget _reusableText(
   int fontSize = 16,
   fontWeight = FontWeight.bold,
 }) {
-  return Container(
-    child: Text(text,
-        style: TextStyle(
-          fontWeight: fontWeight,
-          color: color,
-          fontSize: fontSize.sp,
-        )),
-  );
+  return Text(text,
+      style: TextStyle(
+        fontWeight: fontWeight,
+        color: color,
+        fontSize: fontSize.sp,
+      ));
 }
 
 // Reusabe text for the menu
@@ -282,6 +279,53 @@ Widget _reusabeMenuText(
       color: textColor,
       fontSize: 12,
       fontWeight: FontWeight.normal,
+    ),
+  );
+}
+
+// for course Grid view UI
+Widget courseGrid() {
+  return Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(16.w),
+      image: const DecorationImage(
+        fit: BoxFit.fill,
+        image: AssetImage(
+          'assets/icons/image(4).png',
+        ),
+      ),
+    ),
+    child: Container(
+      padding: EdgeInsets.all(12.w),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Best Course For IT and Engineering',
+            maxLines: 1,
+            overflow: TextOverflow.fade,
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              color: AppColors.primaryElementText,
+              fontSize: 12.sp,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          SizedBox(height: 5.h),
+          Text(
+            'Best Course For IT',
+            maxLines: 1,
+            overflow: TextOverflow.fade,
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              color: AppColors.primaryFourElementText,
+              fontSize: 8.sp,
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }
