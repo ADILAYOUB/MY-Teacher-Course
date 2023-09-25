@@ -22,7 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               profileImage(),
               SizedBox(
-                height: 12.h,
+                height: 32.h,
               ),
               listProfileDetail(),
             ],
