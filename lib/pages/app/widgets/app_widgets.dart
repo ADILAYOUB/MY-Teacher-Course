@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myteacher/common/values/colors.dart';
 import 'package:myteacher/pages/home/home_page.dart';
+import 'package:myteacher/pages/profile/profile.dart';
 
 Widget buildPagesFromNav(int index) {
   List<Widget> pages = [
@@ -9,7 +10,7 @@ Widget buildPagesFromNav(int index) {
     const Center(child: Text('Search')),
     const Center(child: Text('Course')),
     const Center(child: Text('Chat')),
-    const Center(child: Text('Profile')),
+    const ProfilePage(),
   ];
   return pages[index];
 }
