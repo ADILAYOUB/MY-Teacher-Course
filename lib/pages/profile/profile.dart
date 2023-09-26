@@ -24,7 +24,7 @@ class _ProfilePageState extends State<ProfilePage> {
               SizedBox(
                 height: 32.h,
               ),
-              listProfileDetail(),
+              listProfileDetail(context),
             ],
           ),
         ),

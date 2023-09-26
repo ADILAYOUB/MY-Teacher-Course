@@ -39,4 +39,8 @@ class StorageService {
         ? false
         : true;
   }
+
+  Future<bool> logoOut(String key) async {
+    return await _prefs.remove(key);
+  }
 }
