@@ -55,6 +55,15 @@ Widget profileImage() {
   );
 }
 
+// List of Map of name and image
+var imageInfo = <String, String>{
+  'Settings': 'settings.png',
+  'Payment detail': 'credit-card.png',
+  'Achievement': 'award.png',
+  'Love': 'heart(1).png',
+  'Reminders': 'cube.png'
+};
+
 // list of profile details
 Widget listProfileDetail() {
   return Container(
@@ -62,34 +71,38 @@ Widget listProfileDetail() {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        GestureDetector(
-          child: Container(
-            margin: EdgeInsets.only(left: 24.w),
-            child: Row(
-              children: [
-                Container(
-                    width: 40.w,
-                    height: 40.h,
-                    padding: const EdgeInsets.all(8.0),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12.w),
-                      color: AppColors.primaryElement,
-                    ),
-                    child: Image.asset('assets/icons/settings.png')),
-                SizedBox(
-                  width: 16.w,
-                ),
-                Text(
-                  'Settings',
-                  style: TextStyle(
-                      color: AppColors.primaryText,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
+        ...List.generate(
+          imageInfo.length,
+          (index) => GestureDetector(
+            child: Container(
+              margin: EdgeInsets.only(left: 24.w, bottom: 16.h),
+              child: Row(
+                children: [
+                  Container(
+                      width: 40.w,
+                      height: 40.h,
+                      padding: const EdgeInsets.all(8.0),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12.w),
+                        color: AppColors.primaryElement,
+                      ),
+                      child: Image.asset(
+                          'assets/icons/${imageInfo.values.elementAt(index)}')),
+                  SizedBox(
+                    width: 16.w,
+                  ),
+                  Text(
+                    imageInfo.keys.elementAt(index),
+                    style: TextStyle(
+                        color: AppColors.primaryText,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
+        )
       ],
     ),
   );
