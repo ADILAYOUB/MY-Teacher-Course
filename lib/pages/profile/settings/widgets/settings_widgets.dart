@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:myteacher/common/values/colors.dart';
+import 'package:myteacher/common/widgets/base_text.dart';
 
 AppBar settingsAppBar() {
   return AppBar(
-    title: Text(
-      'Settings',
-      style: TextStyle(
-        color: AppColors.primaryText,
-        fontSize: 16.sp,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
+    title: reusableText('Settings'),
     centerTitle: true,
   );
 }
@@ -31,8 +24,7 @@ Widget settingsButton(BuildContext context, void Function()? onPressed) {
                   child: const Text('Cancel'),
                 ),
                 TextButton(
-                  onPressed: () => onPressed,
-                  // onPressed:  _removeUserData,
+                  onPressed: onPressed,
                   child: const Text('Confirm'),
                 )
               ],

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myteacher/common/values/colors.dart';
+import 'package:myteacher/common/widgets/base_text.dart';
 import 'package:myteacher/pages/home/bloc/home_page_bloc.dart';
 import 'package:myteacher/pages/home/bloc/home_page_events.dart';
 import 'package:myteacher/pages/home/bloc/home_page_state.dart';
@@ -215,10 +216,10 @@ Widget menuView() {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          _reusableText('Choose your Coursees'),
+          reusableText('Choose your Coursees'),
           GestureDetector(
             onTap: () {},
-            child: _reusableText(
+            child: reusableText(
               'See All',
               color: AppColors.primarySecondaryElementText,
               fontSize: 12,
@@ -245,21 +246,6 @@ Widget menuView() {
   ]);
 }
 
-// reusable  text in home Scree
-Widget _reusableText(
-  String text, {
-  Color color = AppColors.primaryText,
-  int fontSize = 16,
-  fontWeight = FontWeight.bold,
-}) {
-  return Text(text,
-      style: TextStyle(
-        fontWeight: fontWeight,
-        color: color,
-        fontSize: fontSize.sp,
-      ));
-}
-
 // Reusabe text for the menu
 
 Widget _reusabeMenuText(
@@ -274,7 +260,7 @@ Widget _reusabeMenuText(
         borderRadius: BorderRadius.circular(8.w),
         border: Border.all(color: backgroundColor)),
     padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 16.w),
-    child: _reusableText(
+    child: reusableText(
       text,
       color: textColor,
       fontSize: 12,
